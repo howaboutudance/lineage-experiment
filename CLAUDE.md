@@ -66,7 +66,7 @@ lineage-experiment/
         fixtures/               # shared pytest fixtures, synthetic data factories
     config/                     # dynaconf config (environments, paths)
     docs/
-        PLANNING.md             # experiment phases and goals
+        PLANNING.md             # experiment milestones and goals
         ARCHITECTURE.md         # layered testing topology spec
         DATA_MODEL.md           # synthetic data topology spec
     CLAUDE.md                   # this file
@@ -134,19 +134,19 @@ testing = [
 - When in doubt about whether something is "working" vs "working correctly", write a
   pytest test that injects the known failure mode and confirm it catches it
 
-## What success looks like per experiment phase
+## What success looks like per experiment milestone
 
-See `docs/PLANNING.md` for full phase breakdown. Short version:
+See `docs/PLANNING.md` for full milestone breakdown. Short version:
 
-- **Phase 1**: Synthetic data generation + pytest ingestion contracts catch all 6 known
+- **Milestone 1**: Synthetic data generation + pytest ingestion contracts catch all 6 known
   failure modes
-- **Phase 2**: Delta Lake snapshot isolation gives reproducible datacuts (same version =
+- **Milestone 2**: Delta Lake snapshot isolation gives reproducible datacuts (same version =
   same query result, always)
-- **Phase 3**: GE handoff contracts on derived endpoints are stakeholder-readable and
+- **Milestone 3**: GE handoff contracts on derived endpoints are stakeholder-readable and
   auditable
-- **Phase 4**: OpenLineage spine connects ingestion events to derived endpoint versions —
+- **Milestone 4**: OpenLineage spine connects ingestion events to derived endpoint versions —
   "which FCS file contributed to this endpoint value" is answerable from metadata alone
-- **Phase 5**: DuckDB/DataFusion query layer makes the datacut portable — analyst on a
+- **Milestone 5**: DuckDB/DataFusion query layer makes the datacut portable — analyst on a
   laptop, no server required
 
 ## Documentation — story system

@@ -10,7 +10,7 @@ learnings, not a publishable library (yet).
 ## Guiding principles
 
 - **Experiments over abstractions**: understand the tools before abstracting over them
-- **Failure modes are first-class**: every phase includes injecting known real failures
+- **Failure modes are first-class**: every milestone includes injecting known real failures
   and confirming the architecture catches them
 - **Reproducibility as a primitive**: every datacut must be re-queryable at a specific
   version and return the same answer
@@ -19,7 +19,7 @@ learnings, not a publishable library (yet).
 
 ---
 
-## Phase 1: Synthetic data generation + pytest ingestion contracts
+## Milestone 1: Synthetic data generation + pytest ingestion contracts
 
 **Goal**: Build synthetic data generators that model the BMS CRO transfer topology and
 confirm that pytest ingestion contracts catch all 6 known failure modes.
@@ -36,7 +36,7 @@ confirm that pytest ingestion contracts catch all 6 known failure modes.
   4. Sample ID format inconsistency across CRO sources
   5. MSD plate layout mismatch
   6. Derived endpoint outside plausibility range (sanity check — this one bleeds
-     into Phase 3 but seed it here)
+     into Milestone 3 but seed it here)
 
 **Key questions**:
 - Does fcsparser's data segment extraction work cleanly enough for payload hashing?
@@ -50,7 +50,7 @@ wrong without reading the test code.
 
 ---
 
-## Phase 2: Delta Lake snapshot isolation + reproducible datacuts
+## Milestone 2: Delta Lake snapshot isolation + reproducible datacuts
 
 **Goal**: Confirm that Delta Lake's commit log provides snapshot isolation strong enough
 to use as a reproducibility primitive. A datacut at version N should always return the
@@ -69,7 +69,7 @@ same result regardless of subsequent writes.
 - Does `deltalake` (rust-backed) vs `delta-spark` matter for local experimentation?
   (Hypothesis: rust-backed is fine for this scale, no Spark needed)
 - What's the right granularity for a "datacut" — per study? per CRO batch? per timepoint?
-- How does the Delta commit log interact with OpenLineage events? (Phase 4 question but
+- How does the Delta commit log interact with OpenLineage events? (Milestone 4 question but
   note observations here)
 
 **Done when**: Can write two sequential batches, query each by version, and get
@@ -77,7 +77,7 @@ deterministically different results confirming snapshot isolation.
 
 ---
 
-## Phase 3: GE handoff contracts on derived endpoints
+## Milestone 3: GE handoff contracts on derived endpoints
 
 **Goal**: GE 1.0+ API (August 2024 breaking changes) expressing derived endpoint
 contracts that are stakeholder-readable and auditable. Confirm the GE/pytest boundary
@@ -106,7 +106,7 @@ identifies both failures in plain language.
 
 ---
 
-## Phase 4: OpenLineage spine
+## Milestone 4: OpenLineage spine
 
 **Goal**: Wire OpenLineage event emission into both the pytest ingestion layer and the GE
 handoff layer so that "which source file contributed to this derived endpoint value" is
@@ -136,7 +136,7 @@ the pipeline.
 
 ---
 
-## Phase 5: Portable query layer (DuckDB / DataFusion)
+## Milestone 5: Portable query layer (DuckDB / DataFusion)
 
 **Goal**: Confirm that the datacut is portable — a Delta table + DuckDB is queryable
 on a laptop with no server, no Spark, no infrastructure. Bonus: expose via pg_wire for
@@ -162,7 +162,7 @@ and the same query returns the same result at the pinned version after new data 
 
 ---
 
-## Stretch / future phases
+## Stretch / future milestones
 
 - **Airflow integration**: replace synthetic pipeline runner with Airflow DAG + native
   OpenLineage Airflow integration; compare to manual emission

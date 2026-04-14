@@ -212,7 +212,7 @@ Detection: plate layout validation against expected template in pytest.
 # or mfi_cd25_cd4 = -200  (impossible — negative MFI)
 ```
 Detection: GE plausibility range expectations on derived endpoint table.
-(Also detectable at ingestion as a sanity check — see Phase 1 notes.)
+(Also detectable at ingestion as a sanity check — see Milestone 1 notes.)
 
 ---
 

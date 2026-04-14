@@ -275,6 +275,6 @@ the biostat handoff is "here's a connection string" rather than "here's a CSV."
 
 - A Lakehouse platform (no Databricks, no Snowflake, no cloud required)
 - A data catalog (no DataHub, no Amundsen — OpenLineage events are the catalog)
-- An orchestration framework (no Airflow in Phase 1-5, possible stretch goal)
+- An orchestration framework (no Airflow in Milestone 1-5, possible stretch goal)
 - Production infrastructure (local files, local DuckDB, local Marquez)
 - A generalizable framework (yet — validate first, abstract later)
