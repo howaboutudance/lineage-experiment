@@ -15,4 +15,7 @@ ipython # ipython is a REPL for Python
 ipdb # ipdb is a debugger for Python using IPython
 
 # linting
-ruff ~= 0.8 # ruff is a linter for Python
+ruff ~= 0.15 # ruff is a linter for Python
+
+# type checking
+ty

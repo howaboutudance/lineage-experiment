@@ -1,4 +1,4 @@
-"""Tests for app.config module."""
+"""Tests for lineage_experiment.config module."""
 
 import os
 from pathlib import Path
@@ -6,7 +6,7 @@ from unittest import mock
 
 import pytest
 
-from app.config import ENV, settings
+from lineage_experiment.config import ENV, settings
 
 
 def test_env():
