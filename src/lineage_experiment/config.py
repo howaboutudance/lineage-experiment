@@ -1,9 +1,7 @@
-"""Configuration and Setup for Pomo."""
+"""Configuration and setup for lineage-experiment."""
 
 import logging
 import os
-import platform
-from pathlib import Path
 
 import dynaconf
 
